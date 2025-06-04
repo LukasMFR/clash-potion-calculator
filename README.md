@@ -18,6 +18,7 @@
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 - [⚠️ Disclaimer](#️-disclaimer)
+- [☕ Support the Project](#-support-the-project)
 
 ---
 
@@ -141,3 +142,13 @@ See [`LICENSE`](LICENSE) file for details.
 This project is **not affiliated with, endorsed, sponsored, or specifically approved by Supercell**.
 All *Clash of Clans* assets belong to Supercell Oy.
 Refer to their [Fan Content Policy](https://supercell.com/en/fan-content-policy/) for more information.
+
+---
+
+## ☕ Support the Project
+
+If you found this tool helpful and want to support my work, you can buy me a coffee here:
+
+**[https://coff.ee/LukasMFR](https://coff.ee/LukasMFR)**
+
+Thank you so much!
