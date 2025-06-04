@@ -29,12 +29,12 @@
     </nav>
     <main class="container">
         <h1 class="title">Builder Potion Calculator</h1>
+        <div class="tabs">
+            <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
+            <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
+        </div>
         <div class="split-layout">
             <div class="split-layout__left">
-                <div class="tabs">
-                    <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
-                    <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
-                </div>
                 <form id="builderPotionForm" class="form card card--content" data-tab-content="potion">
                     <div class="form__group">
                         <label for="builder-days" class="form__label">Days</label>

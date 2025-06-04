@@ -499,8 +499,4 @@ a:focus {
         flex-direction: column;
         justify-content: flex-start;
     }
-
-    .split-layout__right .result {
-        margin-top: 0;
-    }
 }
