@@ -243,6 +243,19 @@ body {
     background: linear-gradient(120deg, #fae2e6, #eed5d6);
 }
 
+.card__icon--img {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 10px;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px 0 rgba(120, 120, 135, 0.09);
+    background: none !important;
+    filter: none;
+    opacity: 1;
+    display: block;
+}
+
 .card--content {
     min-width: 220px;
 }
@@ -391,10 +404,6 @@ body {
 @media (max-width: 600px) {
     .container {
         padding: 18px 3vw 48px;
-    }
-
-    .grid--potions {
-        grid-template-columns: 1fr;
     }
 
     .card {
