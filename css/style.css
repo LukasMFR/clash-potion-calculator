@@ -24,7 +24,7 @@
     --about-divider: #e1e1e8;
 }
 
-/* Dark mode natif */
+/* Native dark mode */
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: #101013;
