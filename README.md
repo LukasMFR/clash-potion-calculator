@@ -36,7 +36,9 @@
 
 ## 🖼️ Preview
 
-> Coming soon: screenshots or live demo link!
+<p align="center">
+  <img src="assets/screenshots/preview.png" alt="Clash Potion Calculator preview" style="width:70%;">
+</p>
 
 ---
 
