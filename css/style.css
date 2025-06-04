@@ -28,6 +28,10 @@
     }
 }
 
+html {
+    overflow-y: scroll;
+}
+
 /* Base */
 html,
 body {
