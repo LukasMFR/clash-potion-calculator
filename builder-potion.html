@@ -29,56 +29,65 @@
     </nav>
     <main class="container">
         <h1 class="title">Builder Potion Calculator</h1>
-        <div class="tabs">
-            <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
-            <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
+        <div class="split-layout">
+            <div class="split-layout__left">
+                <div class="tabs">
+                    <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
+                    <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
+                </div>
+                <form id="builderPotionForm" class="form card card--content" data-tab-content="potion">
+                    <div class="form__group">
+                        <label for="builder-days" class="form__label">Days</label>
+                        <input type="number" class="form__input" id="builder-days" name="days" min="0" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="builder-hours" class="form__label">Hours</label>
+                        <input type="number" class="form__input" id="builder-hours" name="hours" min="0" max="23"
+                            value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="builder-minutes" class="form__label">Minutes</label>
+                        <input type="number" class="form__input" id="builder-minutes" name="minutes" min="0" max="59"
+                            value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="builder-potions" class="form__label">Builder Potions</label>
+                        <input type="number" class="form__input" id="builder-potions" name="potions" min="0" value="0">
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                </form>
+                <form id="builderBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
+                    <div class="form__group">
+                        <label for="builder-boost-hours" class="form__label">Boost Hours Left</label>
+                        <input type="number" class="form__input" id="builder-boost-hours" name="boost_hours" min="0"
+                            value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="builder-boost-minutes" class="form__label">Boost Minutes Left</label>
+                        <input type="number" class="form__input" id="builder-boost-minutes" name="boost_minutes" min="0"
+                            max="59" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="builder-boost-days" class="form__label">Upgrade Days Left</label>
+                        <input type="number" class="form__input" id="builder-boost-days" name="days" min="0" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="builder-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
+                        <input type="number" class="form__input" id="builder-boost-hours-upgrade" name="hours" min="0"
+                            max="23" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="builder-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
+                        <input type="number" class="form__input" id="builder-boost-minutes-upgrade" name="minutes"
+                            min="0" max="59" value="0">
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                </form>
+            </div>
+            <div class="split-layout__right">
+                <div id="builderPotionResult" class="result result--hidden card card--result"></div>
+            </div>
         </div>
-        <form id="builderPotionForm" class="form card card--content" data-tab-content="potion">
-            <div class="form__group">
-                <label for="builder-days" class="form__label">Days</label>
-                <input type="number" class="form__input" id="builder-days" name="days" min="0" value="0">
-            </div>
-            <div class="form__group">
-                <label for="builder-hours" class="form__label">Hours</label>
-                <input type="number" class="form__input" id="builder-hours" name="hours" min="0" max="23" value="0">
-            </div>
-            <div class="form__group">
-                <label for="builder-minutes" class="form__label">Minutes</label>
-                <input type="number" class="form__input" id="builder-minutes" name="minutes" min="0" max="59" value="0">
-            </div>
-            <div class="form__group">
-                <label for="builder-potions" class="form__label">Builder Potions</label>
-                <input type="number" class="form__input" id="builder-potions" name="potions" min="0" value="0">
-            </div>
-            <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
-        </form>
-        <form id="builderBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
-            <div class="form__group">
-                <label for="builder-boost-hours" class="form__label">Boost Hours Left</label>
-                <input type="number" class="form__input" id="builder-boost-hours" name="boost_hours" min="0" value="0">
-            </div>
-            <div class="form__group">
-                <label for="builder-boost-minutes" class="form__label">Boost Minutes Left</label>
-                <input type="number" class="form__input" id="builder-boost-minutes" name="boost_minutes" min="0"
-                    max="59" value="0">
-            </div>
-            <div class="form__group">
-                <label for="builder-boost-days" class="form__label">Upgrade Days Left</label>
-                <input type="number" class="form__input" id="builder-boost-days" name="days" min="0" value="0">
-            </div>
-            <div class="form__group">
-                <label for="builder-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
-                <input type="number" class="form__input" id="builder-boost-hours-upgrade" name="hours" min="0" max="23"
-                    value="0">
-            </div>
-            <div class="form__group">
-                <label for="builder-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
-                <input type="number" class="form__input" id="builder-boost-minutes-upgrade" name="minutes" min="0"
-                    max="59" value="0">
-            </div>
-            <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
-        </form>
-        <div id="builderPotionResult" class="result result--hidden card card--result"></div>
     </main>
     <script>
         // Tab switching logic for this page only

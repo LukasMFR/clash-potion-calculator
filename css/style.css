@@ -28,6 +28,10 @@
     }
 }
 
+* {
+    outline: 1px solid red;
+}
+
 html {
     overflow-y: scroll;
 }
@@ -137,7 +141,7 @@ body {
 /* Container */
 .container {
     width: 100%;
-    max-width: 700px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 38px 18px 70px;
     box-sizing: border-box;
@@ -455,4 +459,48 @@ a:focus {
 ::-webkit-scrollbar-thumb {
     background: rgba(120, 130, 150, 0.10);
     border-radius: 6px;
+}
+
+.split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+
+.split-layout__left,
+.split-layout__right {
+    width: 100%;
+}
+
+/* Desktop/large screen : active split */
+@media (min-width: 900px) {
+    .split-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2.8rem;
+        min-height: 400px;
+        /* optionnel */
+    }
+
+    .split-layout__left,
+    .split-layout__right {
+        width: 50%;
+        max-width: 420px;
+    }
+
+    .split-layout__left {
+        padding-right: 1.4rem;
+    }
+
+    .split-layout__right {
+        padding-left: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .split-layout__right .result {
+        margin-top: 0;
+    }
 }

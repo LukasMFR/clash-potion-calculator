@@ -29,57 +29,65 @@
     </nav>
     <main class="container">
         <h1 class="title">Research Potion Calculator</h1>
-        <div class="tabs">
-            <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
-            <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
+        <div class="split-layout">
+            <div class="split-layout__left">
+                <div class="tabs">
+                    <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
+                    <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
+                </div>
+                <form id="researchPotionForm" class="form card card--content" data-tab-content="potion">
+                    <div class="form__group">
+                        <label for="research-days" class="form__label">Days</label>
+                        <input type="number" class="form__input" id="research-days" name="days" min="0" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="research-hours" class="form__label">Hours</label>
+                        <input type="number" class="form__input" id="research-hours" name="hours" min="0" max="23"
+                            value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="research-minutes" class="form__label">Minutes</label>
+                        <input type="number" class="form__input" id="research-minutes" name="minutes" min="0" max="59"
+                            value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="research-potions" class="form__label">Research Potions</label>
+                        <input type="number" class="form__input" id="research-potions" name="potions" min="0" value="0">
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                </form>
+                <form id="researchBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
+                    <div class="form__group">
+                        <label for="research-boost-hours" class="form__label">Boost Hours Left</label>
+                        <input type="number" class="form__input" id="research-boost-hours" name="boost_hours" min="0"
+                            value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="research-boost-minutes" class="form__label">Boost Minutes Left</label>
+                        <input type="number" class="form__input" id="research-boost-minutes" name="boost_minutes"
+                            min="0" max="59" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="research-boost-days" class="form__label">Upgrade Days Left</label>
+                        <input type="number" class="form__input" id="research-boost-days" name="days" min="0" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="research-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
+                        <input type="number" class="form__input" id="research-boost-hours-upgrade" name="hours" min="0"
+                            max="23" value="0">
+                    </div>
+                    <div class="form__group">
+                        <label for="research-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
+                        <input type="number" class="form__input" id="research-boost-minutes-upgrade" name="minutes"
+                            min="0" max="59" value="0">
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                </form>
+            </div>
+            <div class="split-layout__right">
+                <div id="researchPotionResult" class="result result--hidden card card--result"></div>
+            </div>
         </div>
-        <form id="researchPotionForm" class="form card card--content" data-tab-content="potion">
-            <div class="form__group">
-                <label for="research-days" class="form__label">Days</label>
-                <input type="number" class="form__input" id="research-days" name="days" min="0" value="0">
-            </div>
-            <div class="form__group">
-                <label for="research-hours" class="form__label">Hours</label>
-                <input type="number" class="form__input" id="research-hours" name="hours" min="0" max="23" value="0">
-            </div>
-            <div class="form__group">
-                <label for="research-minutes" class="form__label">Minutes</label>
-                <input type="number" class="form__input" id="research-minutes" name="minutes" min="0" max="59"
-                    value="0">
-            </div>
-            <div class="form__group">
-                <label for="research-potions" class="form__label">Research Potions</label>
-                <input type="number" class="form__input" id="research-potions" name="potions" min="0" value="0">
-            </div>
-            <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
-        </form>
-        <form id="researchBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
-            <div class="form__group">
-                <label for="research-boost-hours" class="form__label">Boost Hours Left</label>
-                <input type="number" class="form__input" id="research-boost-hours" name="boost_hours" min="0" value="0">
-            </div>
-            <div class="form__group">
-                <label for="research-boost-minutes" class="form__label">Boost Minutes Left</label>
-                <input type="number" class="form__input" id="research-boost-minutes" name="boost_minutes" min="0"
-                    max="59" value="0">
-            </div>
-            <div class="form__group">
-                <label for="research-boost-days" class="form__label">Upgrade Days Left</label>
-                <input type="number" class="form__input" id="research-boost-days" name="days" min="0" value="0">
-            </div>
-            <div class="form__group">
-                <label for="research-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
-                <input type="number" class="form__input" id="research-boost-hours-upgrade" name="hours" min="0" max="23"
-                    value="0">
-            </div>
-            <div class="form__group">
-                <label for="research-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
-                <input type="number" class="form__input" id="research-boost-minutes-upgrade" name="minutes" min="0"
-                    max="59" value="0">
-            </div>
-            <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
-        </form>
-        <div id="researchPotionResult" class="result result--hidden card card--result"></div>
     </main>
     <script>
         // Tab switching logic (same as builder-potion)
