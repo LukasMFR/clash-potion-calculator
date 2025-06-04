@@ -3,103 +3,100 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Builder Potion — Clash Potion Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Builder Potion | Clash Potion Calculator</title>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/utils.js"></script>
+    <script defer src="js/calculator.js"></script>
 </head>
 
-<body>
-    <!-- Navbar -->
-    <header class="navbar">
-        <a href="index.html" class="site-title">Clash Potion Calculator</a>
-        <nav>
-            <div class="nav-links">
-                <a class="nav-link" href="simple-calc.html">Simple</a>
-                <a class="nav-link" href="builder-potion.html">Builder Potion</a>
-                <a class="nav-link" href="research-potion.html">Research Potion</a>
-                <a class="nav-link" href="pet-potion.html">Pet Potion</a>
-            </div>
-            <div class="hamburger" onclick="toggleNav()">
-                <span></span><span></span><span></span>
-            </div>
-        </nav>
-    </header>
-    <main class="main-content">
-        <h2>Builder Potion Calculator 👷‍♂️</h2>
-        <div class="form-container">
-            <form id="builderForm">
-                <div class="input-group">
-                    <label class="input-label" for="days">Days</label>
-                    <input class="input-field" id="days" name="days" type="number" min="0" value="0">
-                    <label class="input-label" for="hours">Hours</label>
-                    <input class="input-field" id="hours" name="hours" type="number" min="0" max="23" value="0">
-                    <label class="input-label" for="minutes">Minutes</label>
-                    <input class="input-field" id="minutes" name="minutes" type="number" min="0" max="59" value="0">
-                </div>
-                <div class="input-group">
-                    <label class="input-label" for="potions">Potions</label>
-                    <input class="input-field" id="potions" name="potions" type="number" min="0" max="5" value="0">
-                </div>
-                <div class="input-group">
-                    <label class="input-label" for="boostHours">Boost left</label>
-                    <input class="input-field" id="boostHours" name="boostHours" type="number" min="0" max="24"
-                        value="0" placeholder="Hours">
-                    <input class="input-field" id="boostMinutes" name="boostMinutes" type="number" min="0" max="59"
-                        value="0" placeholder="Minutes">
-                    <span style="color:var(--coc-gold);font-size:0.98em;align-self:center;">(if already started)</span>
-                </div>
-                <button type="submit" class="button">Calculate</button>
-            </form>
-            <div id="builderResult" class="result" style="display:none"></div>
+<body class="main-bg">
+    <nav class="navbar">
+        <div class="navbar__logo">Clash Potion Calculator</div>
+        <input type="checkbox" id="nav-toggle" class="navbar__toggle">
+        <label for="nav-toggle" class="navbar__burger">
+            <span class="navbar__burger-line"></span>
+            <span class="navbar__burger-line"></span>
+            <span class="navbar__burger-line"></span>
+        </label>
+        <ul class="navbar__links">
+            <li><a href="index.html" class="navbar__link">Home</a></li>
+            <li><a href="simple-calc.html" class="navbar__link">Simple Calc</a></li>
+            <li><a href="builder-potion.html" class="navbar__link navbar__link--active">Builder Potion</a></li>
+            <li><a href="research-potion.html" class="navbar__link">Research Potion</a></li>
+            <li><a href="pet-potion.html" class="navbar__link">Pet Potion</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h1 class="title">Builder Potion Calculator</h1>
+        <div class="tabs">
+            <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
+            <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
         </div>
+        <form id="builderPotionForm" class="form card card--content" data-tab-content="potion">
+            <div class="form__group">
+                <label for="builder-days" class="form__label">Days</label>
+                <input type="number" class="form__input" id="builder-days" name="days" min="0" value="0">
+            </div>
+            <div class="form__group">
+                <label for="builder-hours" class="form__label">Hours</label>
+                <input type="number" class="form__input" id="builder-hours" name="hours" min="0" max="23" value="0">
+            </div>
+            <div class="form__group">
+                <label for="builder-minutes" class="form__label">Minutes</label>
+                <input type="number" class="form__input" id="builder-minutes" name="minutes" min="0" max="59" value="0">
+            </div>
+            <div class="form__group">
+                <label for="builder-potions" class="form__label">Builder Potions</label>
+                <input type="number" class="form__input" id="builder-potions" name="potions" min="0" value="0">
+            </div>
+            <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+        </form>
+        <form id="builderBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
+            <div class="form__group">
+                <label for="builder-boost-hours" class="form__label">Boost Hours Left</label>
+                <input type="number" class="form__input" id="builder-boost-hours" name="boost_hours" min="0" value="0">
+            </div>
+            <div class="form__group">
+                <label for="builder-boost-minutes" class="form__label">Boost Minutes Left</label>
+                <input type="number" class="form__input" id="builder-boost-minutes" name="boost_minutes" min="0"
+                    max="59" value="0">
+            </div>
+            <div class="form__group">
+                <label for="builder-boost-days" class="form__label">Upgrade Days Left</label>
+                <input type="number" class="form__input" id="builder-boost-days" name="days" min="0" value="0">
+            </div>
+            <div class="form__group">
+                <label for="builder-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
+                <input type="number" class="form__input" id="builder-boost-hours-upgrade" name="hours" min="0" max="23"
+                    value="0">
+            </div>
+            <div class="form__group">
+                <label for="builder-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
+                <input type="number" class="form__input" id="builder-boost-minutes-upgrade" name="minutes" min="0"
+                    max="59" value="0">
+            </div>
+            <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+        </form>
+        <div id="builderPotionResult" class="result result--hidden card card--result"></div>
     </main>
-    <footer>
-        Clash Potion Calculator — Open source on <a href="https://github.com/" target="_blank">GitHub</a>
-    </footer>
-    <script src="js/utils.js"></script>
-    <script src="js/calculator.js"></script>
     <script>
-        function toggleNav() {
-            document.querySelector('.navbar').classList.toggle('open');
-        }
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 800)
-                document.querySelector('.navbar').classList.remove('open');
+        // Tab switching logic for this page only
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tabs__btn');
+            const forms = {
+                potion: document.getElementById('builderPotionForm'),
+                boost: document.getElementById('builderBoostForm')
+            };
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('tabs__btn--active'));
+                    tab.classList.add('tabs__btn--active');
+                    Object.keys(forms).forEach(k => forms[k].classList.add('form--hidden'));
+                    forms[tab.dataset.tab].classList.remove('form--hidden');
+                });
+            });
         });
-
-        document.getElementById('builderForm').onsubmit = function (e) {
-            e.preventDefault();
-            let days = Number(this.days.value);
-            let hours = Number(this.hours.value);
-            let minutes = Number(this.minutes.value);
-            let potions = Number(this.potions.value);
-            let boostHours = Number(this.boostHours.value);
-            let boostMinutes = Number(this.boostMinutes.value);
-
-            let resultDiv = document.getElementById('builderResult');
-            if (boostHours || boostMinutes) {
-                let { resultText } = calcPotion({
-                    mode: "builder",
-                    days, hours, minutes,
-                    boostHours, boostMinutes
-                });
-                resultDiv.textContent = resultText;
-            } else if (potions) {
-                let { resultText } = calcPotion({
-                    mode: "builder",
-                    days, hours, minutes,
-                    potions
-                });
-                resultDiv.textContent = resultText;
-            } else {
-                let { resultText } = calcPotion({
-                    mode: "simple",
-                    days, hours, minutes
-                });
-                resultDiv.textContent = resultText;
-            }
-            resultDiv.style.display = "block";
-        }
     </script>
 </body>
 

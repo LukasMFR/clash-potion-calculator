@@ -3,67 +3,50 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Clash Potion Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clash Potion Calculator</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <!-- Navbar -->
-    <header class="navbar">
-        <a href="index.html" class="site-title">Clash Potion Calculator</a>
-        <nav>
-            <div class="nav-links">
-                <a class="nav-link" href="simple-calc.html">Simple</a>
-                <a class="nav-link" href="builder-potion.html">Builder Potion</a>
-                <a class="nav-link" href="research-potion.html">Research Potion</a>
-                <a class="nav-link" href="pet-potion.html">Pet Potion</a>
-            </div>
-            <div class="hamburger" onclick="toggleNav()">
-                <span></span><span></span><span></span>
-            </div>
-        </nav>
-    </header>
-    <main class="main-content">
-        <h1 class="page-title">Clash Potion Calculator</h1>
-        <p style="text-align:center;max-width:500px;">
-            Instantly calculate upgrade end times in Clash of Clans! Choose a calculator:
-        </p>
-        <div class="grid">
-            <a class="card" href="simple-calc.html">
-                <span class="card-icon">🕒</span>
-                <div class="card-title">Simple Calc</div>
-                <div>Calculate upgrade end from any duration.</div>
+<body class="main-bg">
+    <nav class="navbar">
+        <div class="navbar__logo">Clash Potion Calculator</div>
+        <input type="checkbox" id="nav-toggle" class="navbar__toggle">
+        <label for="nav-toggle" class="navbar__burger">
+            <span class="navbar__burger-line"></span>
+            <span class="navbar__burger-line"></span>
+            <span class="navbar__burger-line"></span>
+        </label>
+        <ul class="navbar__links">
+            <li><a href="index.html" class="navbar__link">Home</a></li>
+            <li><a href="simple-calc.html" class="navbar__link">Simple Calc</a></li>
+            <li><a href="builder-potion.html" class="navbar__link">Builder Potion</a></li>
+            <li><a href="research-potion.html" class="navbar__link">Research Potion</a></li>
+            <li><a href="pet-potion.html" class="navbar__link">Pet Potion</a></li>
+        </ul>
+    </nav>
+    <main class="container container--centered">
+        <h1 class="title">Clash Potion Calculator</h1>
+        <p class="subtitle">Fast &amp; easy upgrade time calculations for Clash of Clans!</p>
+        <div class="grid grid--potions">
+            <a href="simple-calc.html" class="card card--main card--animated">
+                <div class="card__icon card__icon--simple"></div>
+                <div class="card__title">Simple Calculator</div>
             </a>
-            <a class="card" href="builder-potion.html">
-                <span class="card-icon">👷‍♂️</span>
-                <div class="card-title">Builder Potion</div>
-                <div>Speed up builder upgrades ×10.</div>
+            <a href="builder-potion.html" class="card card--main card--animated">
+                <div class="card__icon card__icon--builder"></div>
+                <div class="card__title">Builder Potion</div>
             </a>
-            <a class="card" href="research-potion.html">
-                <span class="card-icon">🧪</span>
-                <div class="card-title">Research Potion</div>
-                <div>Speed up research upgrades ×24.</div>
+            <a href="research-potion.html" class="card card--main card--animated">
+                <div class="card__icon card__icon--research"></div>
+                <div class="card__title">Research Potion</div>
             </a>
-            <a class="card" href="pet-potion.html">
-                <span class="card-icon">🐾</span>
-                <div class="card-title">Pet Potion</div>
-                <div>Speed up pet upgrades ×24.</div>
+            <a href="pet-potion.html" class="card card--main card--animated">
+                <div class="card__icon card__icon--pet"></div>
+                <div class="card__title">Pet Potion</div>
             </a>
         </div>
     </main>
-    <footer>
-        Clash Potion Calculator — Open source on <a href="https://github.com/" target="_blank">GitHub</a>
-    </footer>
-    <script>
-        function toggleNav() {
-            document.querySelector('.navbar').classList.toggle('open');
-        }
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 800)
-                document.querySelector('.navbar').classList.remove('open');
-        });
-    </script>
 </body>
 
 </html>

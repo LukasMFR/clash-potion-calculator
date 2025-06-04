@@ -1,89 +1,287 @@
-// js/calculator.js
+// calculator.js
 
-/**
- * Main calculation for all potions and simple calc.
- * @param {Object} params
- * @param {"simple"|"builder"|"research"|"pet"} params.mode
- * @param {number} params.days
- * @param {number} params.hours
- * @param {number} params.minutes
- * @param {number} [params.potions]   // builder mode only
- * @param {number} [params.boostHours] // for boost remaining
- * @param {number} [params.boostMinutes]
- * @returns {Object} { resultText, endDate }
- */
-function calcPotion({ mode, days, hours, minutes, potions, boostHours, boostMinutes }) {
-    let now = new Date();
-    let totalMinutes = toMinutes(days, hours, minutes);
-    let result = "";
+// --- SIMPLE CALC --- //
+document.addEventListener('DOMContentLoaded', function () {
+    // Simple calc page
+    const simpleForm = document.getElementById('simpleCalcForm');
+    if (simpleForm) {
+        simpleForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const days = simpleForm.days.value;
+            const hours = simpleForm.hours.value;
+            const minutes = simpleForm.minutes.value;
+            const totalMinutes = toMinutes(days, hours, minutes);
 
-    // Potion speed multipliers
-    const speed = {
-        builder: 10,
-        research: 24,
-        pet: 24
-    };
+            const now = new Date();
+            const endDate = new Date(now.getTime() + totalMinutes * 60000);
 
-    if (mode === "simple") {
-        // Just add duration
-        let end = new Date(now.getTime() + totalMinutes * 60 * 1000);
-        let { days: j, hours: h, minutes: m } = fromMinutes(totalMinutes);
-        result = `Remaining duration: ${j}d ${h}h ${m}m\n→ Estimated end: ${formatDateHuman(end)}`;
-        return { resultText: result, endDate: end };
+            const result = document.getElementById('simpleCalcResult');
+            result.innerHTML = `
+        <strong>Entered duration:</strong> ${days}d ${hours}h ${minutes}m<br>
+        <strong>End date:</strong> ${formatDateHuman(endDate)}
+      `;
+            result.classList.remove('result--hidden');
+        });
     }
 
-    let potionType = mode;
-    let speedup = speed[potionType];
+    // --- BUILDER POTION --- //
+    const builderPotionForm = document.getElementById('builderPotionForm');
+    if (builderPotionForm) {
+        builderPotionForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const days = builderPotionForm.days.value;
+            const hours = builderPotionForm.hours.value;
+            const minutes = builderPotionForm.minutes.value;
+            const potions = builderPotionForm.potions.value;
+            const totalNormalMinutes = toMinutes(days, hours, minutes);
+            const coveredByPotions = (parseInt(potions, 10) || 0) * 600; // 1 potion = 600 normal min
 
-    // Builder/Research/Pet potion - Full calculation
-    if (boostHours !== undefined || boostMinutes !== undefined) {
-        // Boost already in progress (Mode 3 in Python)
-        let boostMinutesTotal = toMinutes(0, boostHours, boostMinutes);
-        let coveredWork = boostMinutesTotal * speedup;
-        if (coveredWork >= totalMinutes) {
-            // Boost enough to finish everything
-            let realTimeNeeded = Math.ceil(totalMinutes / speedup);
-            let end = new Date(now.getTime() + realTimeNeeded * 60 * 1000);
-            let { hours: h, minutes: m } = fromMinutes(realTimeNeeded);
-            let boostLeft = boostMinutesTotal - realTimeNeeded;
-            result = `Boost covers all work (${boostMinutesTotal} min real, ×${speedup})\n→ Needed under boost: ${h}h ${m}m\n→ Unused boost left: ${boostLeft} min\n→ Estimated end: ${formatDateHuman(end)}\n→ All remaining time under boost!`;
-            return { resultText: result, endDate: end };
-        } else {
-            // Boost only partial
-            let workAfterBoost = totalMinutes - coveredWork;
-            let end = new Date(now.getTime() + (boostMinutesTotal + workAfterBoost) * 60 * 1000);
-            let { hours: h1, minutes: m1 } = fromMinutes(boostMinutesTotal);
-            let { days: d2, hours: h2, minutes: m2 } = fromMinutes(workAfterBoost);
-            result =
-                `Boost covers: ${coveredWork} min (${h1}h ${m1}m real)\n` +
-                `Normal work left: ${workAfterBoost} min (${d2}d ${h2}h ${m2}m real)\n` +
-                `→ Estimated end: ${formatDateHuman(end)}\n` +
-                `→ Total remaining: ${(boostMinutesTotal + workAfterBoost)} min (${fromMinutes(boostMinutesTotal + workAfterBoost).days}d ${fromMinutes(boostMinutesTotal + workAfterBoost).hours}h ${fromMinutes(boostMinutesTotal + workAfterBoost).minutes}m)`;
-            return { resultText: result, endDate: end };
-        }
-    } else if (potions !== undefined) {
-        // Potions to be used (Mode 2 in Python)
-        let potionTime = potions * 60; // in real minutes
-        let coveredWork = potions * 60 * speedup;
-        if (coveredWork >= totalMinutes) {
-            // Potions cover all
-            let realTime = Math.ceil(totalMinutes / speedup);
-            let end = new Date(now.getTime() + realTime * 60 * 1000);
-            let { hours: h, minutes: m } = fromMinutes(realTime);
-            result = `Potions cover all work (${potions} potion${potions > 1 ? 's' : ''} = ${coveredWork} min normal)\n→ Time under potion: ${h}h ${m}m (${realTime} min real)\n→ Estimated end: ${formatDateHuman(end)}\n→ No normal time left.`;
-            return { resultText: result, endDate: end };
-        } else {
-            let workAfter = totalMinutes - coveredWork;
-            let end = new Date(now.getTime() + (potionTime + workAfter) * 60 * 1000);
-            let { hours: h1, minutes: m1 } = fromMinutes(potionTime);
-            let { days: d2, hours: h2, minutes: m2 } = fromMinutes(workAfter);
-            result =
-                `Potions cover: ${coveredWork} min normal (${potions} potion${potions > 1 ? 's' : ''}, ${h1}h ${m1}m real)\n` +
-                `Normal work left: ${workAfter} min (${d2}d ${h2}h ${m2}m)\n` +
-                `→ Estimated end: ${formatDateHuman(end)}\n` +
-                `→ Total remaining: ${(potionTime + workAfter)} min (${fromMinutes(potionTime + workAfter).days}d ${fromMinutes(potionTime + workAfter).hours}h ${fromMinutes(potionTime + workAfter).minutes}m)`;
-            return { resultText: result, endDate: end };
-        }
+            let realTimeMinutes, normalTimeLeft;
+            if (coveredByPotions >= totalNormalMinutes) {
+                realTimeMinutes = Math.ceil(totalNormalMinutes / 10);
+                normalTimeLeft = 0;
+            } else {
+                realTimeMinutes = (parseInt(potions, 10) || 0) * 60;
+                normalTimeLeft = totalNormalMinutes - coveredByPotions;
+            }
+            const totalRealMinutes = realTimeMinutes + normalTimeLeft;
+            const now = new Date();
+            const endDate = new Date(now.getTime() + totalRealMinutes * 60000);
+
+            const realUnderPotion = fromMinutes(realTimeMinutes);
+            const normalLeft = fromMinutes(normalTimeLeft);
+            const totalLeft = fromMinutes(totalRealMinutes);
+
+            const result = document.getElementById('builderPotionResult');
+            result.innerHTML = `
+        <strong>Upgrade duration:</strong> ${days}d ${hours}h ${minutes}m<br>
+        <strong>Potions used:</strong> ${potions}<br>
+        <strong>Time under potion:</strong> ${realUnderPotion.hours}h ${realUnderPotion.minutes}m<br>
+        <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
+        <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
+        <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
+      `;
+            result.classList.remove('result--hidden');
+        });
     }
-    return { resultText: "Invalid parameters.", endDate: now };
-}
+
+    // --- BUILDER BOOST --- //
+    const builderBoostForm = document.getElementById('builderBoostForm');
+    if (builderBoostForm) {
+        builderBoostForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const boostHours = builderBoostForm.boost_hours.value;
+            const boostMinutes = builderBoostForm.boost_minutes.value;
+            const days = builderBoostForm.days.value;
+            const hours = builderBoostForm.hours.value;
+            const minutes = builderBoostForm.minutes.value;
+
+            const boostRealMinutes = toMinutes(0, boostHours, boostMinutes);
+            const coveredByBoost = boostRealMinutes * 10;
+            const totalNormalMinutes = toMinutes(days, hours, minutes);
+
+            let realTimeMinutes, normalTimeLeft, finishedWithBoost = false;
+            if (coveredByBoost >= totalNormalMinutes) {
+                realTimeMinutes = Math.ceil(totalNormalMinutes / 10);
+                normalTimeLeft = 0;
+                finishedWithBoost = true;
+            } else {
+                realTimeMinutes = boostRealMinutes;
+                normalTimeLeft = totalNormalMinutes - coveredByBoost;
+            }
+            const totalRealMinutes = realTimeMinutes + normalTimeLeft;
+            const now = new Date();
+            const endDate = new Date(now.getTime() + totalRealMinutes * 60000);
+
+            const realUnderBoost = fromMinutes(realTimeMinutes);
+            const normalLeft = fromMinutes(normalTimeLeft);
+            const totalLeft = fromMinutes(totalRealMinutes);
+
+            const result = document.getElementById('builderPotionResult');
+            result.innerHTML = `
+        <strong>Upgrade left:</strong> ${days}d ${hours}h ${minutes}m<br>
+        <strong>Boost left:</strong> ${boostHours}h ${boostMinutes}m<br>
+        <strong>Covered by boost:</strong> ${coveredByBoost}m<br>
+        <strong>${finishedWithBoost ? "Finished entirely under boost!" : "Time under boost:"}</strong> ${realUnderBoost.hours}h ${realUnderBoost.minutes}m<br>
+        <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
+        <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
+        <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
+      `;
+            result.classList.remove('result--hidden');
+        });
+    }
+
+    // --- RESEARCH POTION --- //
+    const researchPotionForm = document.getElementById('researchPotionForm');
+    if (researchPotionForm) {
+        researchPotionForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const days = researchPotionForm.days.value;
+            const hours = researchPotionForm.hours.value;
+            const minutes = researchPotionForm.minutes.value;
+            const potions = researchPotionForm.potions.value;
+            const totalNormalMinutes = toMinutes(days, hours, minutes);
+            const coveredByPotions = (parseInt(potions, 10) || 0) * 1440; // 1 potion = 1h x24 = 1440 normal min
+
+            let realTimeMinutes, normalTimeLeft;
+            if (coveredByPotions >= totalNormalMinutes) {
+                realTimeMinutes = Math.ceil(totalNormalMinutes / 24);
+                normalTimeLeft = 0;
+            } else {
+                realTimeMinutes = (parseInt(potions, 10) || 0) * 60;
+                normalTimeLeft = totalNormalMinutes - coveredByPotions;
+            }
+            const totalRealMinutes = realTimeMinutes + normalTimeLeft;
+            const now = new Date();
+            const endDate = new Date(now.getTime() + totalRealMinutes * 60000);
+
+            const realUnderPotion = fromMinutes(realTimeMinutes);
+            const normalLeft = fromMinutes(normalTimeLeft);
+            const totalLeft = fromMinutes(totalRealMinutes);
+
+            const result = document.getElementById('researchPotionResult');
+            result.innerHTML = `
+      <strong>Upgrade duration:</strong> ${days}d ${hours}h ${minutes}m<br>
+      <strong>Potions used:</strong> ${potions}<br>
+      <strong>Time under potion:</strong> ${realUnderPotion.hours}h ${realUnderPotion.minutes}m<br>
+      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
+      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
+      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
+    `;
+            result.classList.remove('result--hidden');
+        });
+    }
+
+    // --- RESEARCH BOOST --- //
+    const researchBoostForm = document.getElementById('researchBoostForm');
+    if (researchBoostForm) {
+        researchBoostForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const boostHours = researchBoostForm.boost_hours.value;
+            const boostMinutes = researchBoostForm.boost_minutes.value;
+            const days = researchBoostForm.days.value;
+            const hours = researchBoostForm.hours.value;
+            const minutes = researchBoostForm.minutes.value;
+
+            const boostRealMinutes = toMinutes(0, boostHours, boostMinutes);
+            const coveredByBoost = boostRealMinutes * 24;
+            const totalNormalMinutes = toMinutes(days, hours, minutes);
+
+            let realTimeMinutes, normalTimeLeft, finishedWithBoost = false;
+            if (coveredByBoost >= totalNormalMinutes) {
+                realTimeMinutes = Math.ceil(totalNormalMinutes / 24);
+                normalTimeLeft = 0;
+                finishedWithBoost = true;
+            } else {
+                realTimeMinutes = boostRealMinutes;
+                normalTimeLeft = totalNormalMinutes - coveredByBoost;
+            }
+            const totalRealMinutes = realTimeMinutes + normalTimeLeft;
+            const now = new Date();
+            const endDate = new Date(now.getTime() + totalRealMinutes * 60000);
+
+            const realUnderBoost = fromMinutes(realTimeMinutes);
+            const normalLeft = fromMinutes(normalTimeLeft);
+            const totalLeft = fromMinutes(totalRealMinutes);
+
+            const result = document.getElementById('researchPotionResult');
+            result.innerHTML = `
+      <strong>Upgrade left:</strong> ${days}d ${hours}h ${minutes}m<br>
+      <strong>Boost left:</strong> ${boostHours}h ${boostMinutes}m<br>
+      <strong>Covered by boost:</strong> ${coveredByBoost}m<br>
+      <strong>${finishedWithBoost ? "Finished entirely under boost!" : "Time under boost:"}</strong> ${realUnderBoost.hours}h ${realUnderBoost.minutes}m<br>
+      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
+      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
+      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
+    `;
+            result.classList.remove('result--hidden');
+        });
+    }
+
+    // --- PET POTION --- //
+    const petPotionForm = document.getElementById('petPotionForm');
+    if (petPotionForm) {
+        petPotionForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const days = petPotionForm.days.value;
+            const hours = petPotionForm.hours.value;
+            const minutes = petPotionForm.minutes.value;
+            const potions = petPotionForm.potions.value;
+            const totalNormalMinutes = toMinutes(days, hours, minutes);
+            const coveredByPotions = (parseInt(potions, 10) || 0) * 1440; // 1 potion = 1h x24 = 1440 normal min
+
+            let realTimeMinutes, normalTimeLeft;
+            if (coveredByPotions >= totalNormalMinutes) {
+                realTimeMinutes = Math.ceil(totalNormalMinutes / 24);
+                normalTimeLeft = 0;
+            } else {
+                realTimeMinutes = (parseInt(potions, 10) || 0) * 60;
+                normalTimeLeft = totalNormalMinutes - coveredByPotions;
+            }
+            const totalRealMinutes = realTimeMinutes + normalTimeLeft;
+            const now = new Date();
+            const endDate = new Date(now.getTime() + totalRealMinutes * 60000);
+
+            const realUnderPotion = fromMinutes(realTimeMinutes);
+            const normalLeft = fromMinutes(normalTimeLeft);
+            const totalLeft = fromMinutes(totalRealMinutes);
+
+            const result = document.getElementById('petPotionResult');
+            result.innerHTML = `
+      <strong>Upgrade duration:</strong> ${days}d ${hours}h ${minutes}m<br>
+      <strong>Potions used:</strong> ${potions}<br>
+      <strong>Time under potion:</strong> ${realUnderPotion.hours}h ${realUnderPotion.minutes}m<br>
+      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
+      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
+      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
+    `;
+            result.classList.remove('result--hidden');
+        });
+    }
+
+    // --- PET BOOST --- //
+    const petBoostForm = document.getElementById('petBoostForm');
+    if (petBoostForm) {
+        petBoostForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const boostHours = petBoostForm.boost_hours.value;
+            const boostMinutes = petBoostForm.boost_minutes.value;
+            const days = petBoostForm.days.value;
+            const hours = petBoostForm.hours.value;
+            const minutes = petBoostForm.minutes.value;
+
+            const boostRealMinutes = toMinutes(0, boostHours, boostMinutes);
+            const coveredByBoost = boostRealMinutes * 24;
+            const totalNormalMinutes = toMinutes(days, hours, minutes);
+
+            let realTimeMinutes, normalTimeLeft, finishedWithBoost = false;
+            if (coveredByBoost >= totalNormalMinutes) {
+                realTimeMinutes = Math.ceil(totalNormalMinutes / 24);
+                normalTimeLeft = 0;
+                finishedWithBoost = true;
+            } else {
+                realTimeMinutes = boostRealMinutes;
+                normalTimeLeft = totalNormalMinutes - coveredByBoost;
+            }
+            const totalRealMinutes = realTimeMinutes + normalTimeLeft;
+            const now = new Date();
+            const endDate = new Date(now.getTime() + totalRealMinutes * 60000);
+
+            const realUnderBoost = fromMinutes(realTimeMinutes);
+            const normalLeft = fromMinutes(normalTimeLeft);
+            const totalLeft = fromMinutes(totalRealMinutes);
+
+            const result = document.getElementById('petPotionResult');
+            result.innerHTML = `
+      <strong>Upgrade left:</strong> ${days}d ${hours}h ${minutes}m<br>
+      <strong>Boost left:</strong> ${boostHours}h ${boostMinutes}m<br>
+      <strong>Covered by boost:</strong> ${coveredByBoost}m<br>
+      <strong>${finishedWithBoost ? "Finished entirely under boost!" : "Time under boost:"}</strong> ${realUnderBoost.hours}h ${realUnderBoost.minutes}m<br>
+      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
+      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
+      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
+    `;
+            result.classList.remove('result--hidden');
+        });
+    }
+});
