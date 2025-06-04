@@ -10,3 +10,4 @@ node_modules/
 # Build output (if any build system is used later)
 dist/
 build/
+.repoignore
