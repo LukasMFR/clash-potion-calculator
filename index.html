@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clash Potion Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="index.html" class="site-title">Clash Potion Calculator</a>
+        <nav>
+            <div class="nav-links">
+                <a class="nav-link" href="simple-calc.html">Simple</a>
+                <a class="nav-link" href="builder-potion.html">Builder Potion</a>
+                <a class="nav-link" href="research-potion.html">Research Potion</a>
+                <a class="nav-link" href="pet-potion.html">Pet Potion</a>
+            </div>
+            <div class="hamburger" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+    <main class="main-content">
+        <h1 class="page-title">Clash Potion Calculator</h1>
+        <p style="text-align:center;max-width:500px;">
+            Instantly calculate upgrade end times in Clash of Clans! Choose a calculator:
+        </p>
+        <div class="grid">
+            <a class="card" href="simple-calc.html">
+                <span class="card-icon">🕒</span>
+                <div class="card-title">Simple Calc</div>
+                <div>Calculate upgrade end from any duration.</div>
+            </a>
+            <a class="card" href="builder-potion.html">
+                <span class="card-icon">👷‍♂️</span>
+                <div class="card-title">Builder Potion</div>
+                <div>Speed up builder upgrades ×10.</div>
+            </a>
+            <a class="card" href="research-potion.html">
+                <span class="card-icon">🧪</span>
+                <div class="card-title">Research Potion</div>
+                <div>Speed up research upgrades ×24.</div>
+            </a>
+            <a class="card" href="pet-potion.html">
+                <span class="card-icon">🐾</span>
+                <div class="card-title">Pet Potion</div>
+                <div>Speed up pet upgrades ×24.</div>
+            </a>
+        </div>
+    </main>
+    <footer>
+        Clash Potion Calculator — Open source on <a href="https://github.com/" target="_blank">GitHub</a>
+    </footer>
+    <script>
+        function toggleNav() {
+            document.querySelector('.navbar').classList.toggle('open');
+        }
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 800)
+                document.querySelector('.navbar').classList.remove('open');
+        });
+    </script>
+</body>
+
+</html>

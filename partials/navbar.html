@@ -1,0 +1,23 @@
+<header class="navbar">
+    <a href="index.html" class="site-title">Clash Potion Calculator</a>
+    <nav>
+        <div class="nav-links">
+            <a class="nav-link" href="simple-calc.html">Simple</a>
+            <a class="nav-link" href="builder-potion.html">Builder Potion</a>
+            <a class="nav-link" href="research-potion.html">Research Potion</a>
+            <a class="nav-link" href="pet-potion.html">Pet Potion</a>
+        </div>
+        <div class="hamburger" onclick="toggleNav()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+<script>
+    function toggleNav() {
+        document.querySelector('.navbar').classList.toggle('open');
+    }
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 800)
+            document.querySelector('.navbar').classList.remove('open');
+    });
+</script>
