@@ -133,7 +133,7 @@ body {
 /* Container */
 .container {
     width: 100%;
-    max-width: 520px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 38px 18px 70px;
     box-sizing: border-box;
@@ -176,7 +176,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     margin-top: 2.5em;
     width: 100%;
-    max-width: 670px;
+    max-width: 900px;
 }
 
 .card {
@@ -193,6 +193,7 @@ body {
     overflow: hidden;
     backdrop-filter: blur(var(--blur));
     border: 1.5px solid rgba(160, 160, 170, 0.04);
+    max-width: 440px;
 }
 
 .card--main {
@@ -255,7 +256,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
-    width: 100%;
+    /* width: 100%; */
     margin: 2.2em auto 0;
 }
 
