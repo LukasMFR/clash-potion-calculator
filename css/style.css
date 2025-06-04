@@ -1,3 +1,7 @@
+/* * {
+    outline: 1px solid red;
+} */
+
 :root {
     --bg: #f7f7f9;
     --card-bg: rgba(255, 255, 255, 0.68);
@@ -28,9 +32,13 @@
     }
 }
 
-/* * {
-    outline: 1px solid red;
-} */
+@font-face {
+    font-family: 'ClashRegular';
+    src: url('../assets/fonts/Clash_Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 html {
     overflow-y: scroll;
@@ -158,6 +166,7 @@ body {
 
 /* TITRE / SOUS-TITRE */
 .title {
+    font-family: 'ClashRegular', system-ui, sans-serif;
     font-size: 2.25rem;
     margin-bottom: 0.75em;
     font-weight: 800;
