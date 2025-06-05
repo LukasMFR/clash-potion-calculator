@@ -662,6 +662,12 @@ a:focus {
     justify-content: space-between;
     border-bottom: 1px dashed var(--about-divider);
     padding: 0.3em 0;
+    flex-wrap: wrap;
+}
+
+.result__row--stack .result__value {
+    display: block;
+    margin-top: 0.2em;
 }
 
 .result__row:last-child {
