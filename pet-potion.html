@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pet Potion | Clash Potion Calculator</title>
+    <title data-i18n="titles.pet">Pet Potion | Clash Potion Calculator</title>
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/utils.js"></script>
+    <script defer src="js/i18n.js"></script>
     <script defer src="js/calculator.js"></script>
 
     <!-- Apple Touch Icon -->
@@ -40,78 +41,85 @@
             <span class="navbar__burger-line"></span>
         </label>
         <ul class="navbar__links">
-            <li><a href="index.html" class="navbar__link">Home</a></li>
-            <li><a href="simple-calc.html" class="navbar__link">Simple Calc</a></li>
-            <li><a href="builder-potion.html" class="navbar__link">Builder Potion</a></li>
-            <li><a href="research-potion.html" class="navbar__link">Research Potion</a></li>
-            <li><a href="pet-potion.html" class="navbar__link navbar__link--active">Pet Potion</a></li>
-            <li><a href="about.html" class="navbar__link">About</a></li>
+            <li><a href="index.html" class="navbar__link" data-i18n="nav.home">Home</a></li>
+            <li><a href="simple-calc.html" class="navbar__link" data-i18n="nav.simple">Simple Calc</a></li>
+            <li><a href="builder-potion.html" class="navbar__link" data-i18n="nav.builder">Builder Potion</a></li>
+            <li><a href="research-potion.html" class="navbar__link" data-i18n="nav.research">Research Potion</a></li>
+            <li><a href="pet-potion.html" class="navbar__link navbar__link--active" data-i18n="nav.pet">Pet Potion</a></li>
+            <li><a href="about.html" class="navbar__link" data-i18n="nav.about">About</a></li>
+            <li class="navbar__lang">
+                <button id="lang-btn" class="lang-btn" aria-label="language">🌐</button>
+                <ul id="lang-dropdown" class="lang-dropdown">
+                    <li><button data-lang-select="en">🇺🇸 English</button></li>
+                    <li><button data-lang-select="fr">🇫🇷 Français</button></li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <main class="container">
-        <h1 class="title">Pet Potion Calculator</h1>
+        <h1 class="title" data-i18n="pet.title">Pet Potion Calculator</h1>
         <div class="tabs">
-            <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
-            <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
+            <button class="tabs__btn tabs__btn--active" data-tab="potion" data-i18n="pet.tabs.potion">By Potions</button>
+            <button class="tabs__btn" data-tab="boost" data-i18n="pet.tabs.boost">By Boost Time Left</button>
         </div>
         <div class="split-layout">
             <div class="split-layout__left">
                 <form id="petPotionForm" class="form card card--content" data-tab-content="potion">
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="pet-days" class="form__label">Days</label>
+                            <label for="pet-days" class="form__label" data-i18n="pet.labels.days">Days</label>
                             <input type="number" class="form__input" id="pet-days" name="days" min="0" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="pet-hours" class="form__label">Hours</label>
+                            <label for="pet-hours" class="form__label" data-i18n="pet.labels.hours">Hours</label>
                             <input type="number" class="form__input" id="pet-hours" name="hours" min="0" max="23" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="pet-minutes" class="form__label">Minutes</label>
+                            <label for="pet-minutes" class="form__label" data-i18n="pet.labels.minutes">Minutes</label>
                             <input type="number" class="form__input" id="pet-minutes" name="minutes" min="0" max="59" value="0">
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="pet-potions" class="form__label">Pet Potions</label>
+                            <label for="pet-potions" class="form__label" data-i18n="pet.labels.potions">Pet Potions</label>
                             <input type="number" class="form__input" id="pet-potions" name="potions" min="0" value="0">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                    <button type="submit" class="btn btn--primary btn--animated" data-i18n="pet.button">Calculate</button>
                 </form>
                 <form id="petBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="pet-boost-hours" class="form__label">Boost Hours Left</label>
+                            <label for="pet-boost-hours" class="form__label" data-i18n="pet.labels.boostHours">Boost Hours Left</label>
                             <input type="number" class="form__input" id="pet-boost-hours" name="boost_hours" min="0" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="pet-boost-minutes" class="form__label">Boost Minutes Left</label>
+                            <label for="pet-boost-minutes" class="form__label" data-i18n="pet.labels.boostMinutes">Boost Minutes Left</label>
                             <input type="number" class="form__input" id="pet-boost-minutes" name="boost_minutes" min="0" max="59" value="0">
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="pet-boost-days" class="form__label">Upgrade Days Left</label>
+                            <label for="pet-boost-days" class="form__label" data-i18n="pet.labels.upDays">Upgrade Days Left</label>
                             <input type="number" class="form__input" id="pet-boost-days" name="days" min="0" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="pet-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
+                            <label for="pet-boost-hours-upgrade" class="form__label" data-i18n="pet.labels.upHours">Upgrade Hours Left</label>
                             <input type="number" class="form__input" id="pet-boost-hours-upgrade" name="hours" min="0" max="23" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="pet-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
+                            <label for="pet-boost-minutes-upgrade" class="form__label" data-i18n="pet.labels.upMinutes">Upgrade Minutes Left</label>
                             <input type="number" class="form__input" id="pet-boost-minutes-upgrade" name="minutes" min="0" max="59" value="0">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                    <button type="submit" class="btn btn--primary btn--animated" data-i18n="pet.button">Calculate</button>
                 </form>
             </div>
             <div class="split-layout__right">
                 <div id="petPotionResult" class="result card card--result">
                     <div class="result__placeholder">
                         <img src="assets/Magic_Item_Pet_Potion.png" alt="" class="result__icon">
-                        <div class="result__text">
+                        <div class="result__text" data-i18n="pet.placeholder">
                             Enter an upgrade duration and number of potions,<br>
                             then click <b>Calculate</b>.<br>
                             Your result will appear here!

@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = document.getElementById('simpleCalcResult');
             result.innerHTML = formatResultList([
-                ['Entered duration', `${days}d ${hours}h ${minutes}m`],
-                ['End date', formatDateHuman(endDate)]
+                [t('simple.resultEntered'), `${days}d ${hours}h ${minutes}m`],
+                [t('simple.resultEnd'), formatDateHuman(endDate)]
             ]);
             result.classList.remove('result--hidden');
         });
@@ -54,12 +54,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = document.getElementById('builderPotionResult');
             result.innerHTML = formatResultList([
-                ['Upgrade duration', `${days}d ${hours}h ${minutes}m`],
-                ['Potions used', potions],
-                ['Time under potion', `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
-                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
-                ['End date', formatDateHuman(endDate)],
-                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+                [t('builder.result.upgradeDuration'), `${days}d ${hours}h ${minutes}m`],
+                [t('builder.result.potionsUsed'), potions],
+                [t('builder.result.timeUnder'), `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
+                [t('builder.result.normalLeft'), `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                [t('builder.result.endDate'), formatDateHuman(endDate)],
+                [t('builder.result.totalRemaining'), `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
             ]);
             result.classList.remove('result--hidden');
         });
@@ -99,13 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = document.getElementById('builderPotionResult');
             result.innerHTML = formatResultList([
-                ['Upgrade left', `${days}d ${hours}h ${minutes}m`],
-                ['Boost left', `${boostHours}h ${boostMinutes}m`],
-                ['Covered by boost', `${coveredByBoost}m`],
-                [finishedWithBoost ? 'Finished entirely under boost!' : 'Time under boost', `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
-                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
-                ['End date', formatDateHuman(endDate)],
-                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+                [t('builder.result.upgradeLeft'), `${days}d ${hours}h ${minutes}m`],
+                [t('builder.result.boostLeft'), `${boostHours}h ${boostMinutes}m`],
+                [t('builder.result.covered'), `${coveredByBoost}m`],
+                [finishedWithBoost ? t('builder.result.finished') : t('builder.result.timeUnderBoost'), `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
+                [t('builder.result.normalLeft'), `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                [t('builder.result.endDate'), formatDateHuman(endDate)],
+                [t('builder.result.totalRemaining'), `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
             ]);
             result.classList.remove('result--hidden');
         });
@@ -141,12 +141,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = document.getElementById('researchPotionResult');
             result.innerHTML = formatResultList([
-                ['Upgrade duration', `${days}d ${hours}h ${minutes}m`],
-                ['Potions used', potions],
-                ['Time under potion', `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
-                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
-                ['End date', formatDateHuman(endDate)],
-                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+                [t('research.result.upgradeDuration'), `${days}d ${hours}h ${minutes}m`],
+                [t('research.result.potionsUsed'), potions],
+                [t('research.result.timeUnder'), `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
+                [t('research.result.normalLeft'), `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                [t('research.result.endDate'), formatDateHuman(endDate)],
+                [t('research.result.totalRemaining'), `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
             ]);
             result.classList.remove('result--hidden');
         });
@@ -186,13 +186,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = document.getElementById('researchPotionResult');
             result.innerHTML = formatResultList([
-                ['Upgrade left', `${days}d ${hours}h ${minutes}m`],
-                ['Boost left', `${boostHours}h ${boostMinutes}m`],
-                ['Covered by boost', `${coveredByBoost}m`],
-                [finishedWithBoost ? 'Finished entirely under boost!' : 'Time under boost', `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
-                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
-                ['End date', formatDateHuman(endDate)],
-                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+                [t('research.result.upgradeLeft'), `${days}d ${hours}h ${minutes}m`],
+                [t('research.result.boostLeft'), `${boostHours}h ${boostMinutes}m`],
+                [t('research.result.covered'), `${coveredByBoost}m`],
+                [finishedWithBoost ? t('research.result.finished') : t('research.result.timeUnderBoost'), `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
+                [t('research.result.normalLeft'), `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                [t('research.result.endDate'), formatDateHuman(endDate)],
+                [t('research.result.totalRemaining'), `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
             ]);
             result.classList.remove('result--hidden');
         });
@@ -228,12 +228,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = document.getElementById('petPotionResult');
             result.innerHTML = formatResultList([
-                ['Upgrade duration', `${days}d ${hours}h ${minutes}m`],
-                ['Potions used', potions],
-                ['Time under potion', `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
-                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
-                ['End date', formatDateHuman(endDate)],
-                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+                [t('pet.result.upgradeDuration'), `${days}d ${hours}h ${minutes}m`],
+                [t('pet.result.potionsUsed'), potions],
+                [t('pet.result.timeUnder'), `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
+                [t('pet.result.normalLeft'), `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                [t('pet.result.endDate'), formatDateHuman(endDate)],
+                [t('pet.result.totalRemaining'), `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
             ]);
             result.classList.remove('result--hidden');
         });
@@ -273,13 +273,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const result = document.getElementById('petPotionResult');
             result.innerHTML = formatResultList([
-                ['Upgrade left', `${days}d ${hours}h ${minutes}m`],
-                ['Boost left', `${boostHours}h ${boostMinutes}m`],
-                ['Covered by boost', `${coveredByBoost}m`],
-                [finishedWithBoost ? 'Finished entirely under boost!' : 'Time under boost', `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
-                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
-                ['End date', formatDateHuman(endDate)],
-                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+                [t('pet.result.upgradeLeft'), `${days}d ${hours}h ${minutes}m`],
+                [t('pet.result.boostLeft'), `${boostHours}h ${boostMinutes}m`],
+                [t('pet.result.covered'), `${coveredByBoost}m`],
+                [finishedWithBoost ? t('pet.result.finished') : t('pet.result.timeUnderBoost'), `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
+                [t('pet.result.normalLeft'), `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                [t('pet.result.endDate'), formatDateHuman(endDate)],
+                [t('pet.result.totalRemaining'), `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
             ]);
             result.classList.remove('result--hidden');
         });

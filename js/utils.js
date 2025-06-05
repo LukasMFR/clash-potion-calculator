@@ -15,9 +15,10 @@ function fromMinutes(total) {
     return { days, hours, minutes };
 }
 
-// Format date in English: Friday 6 June 2025, 18:12
+// Format date according to current language
 function formatDateHuman(date) {
-    return date.toLocaleString('en-GB', {
+    const lang = document.documentElement.lang === 'fr' ? 'fr-FR' : 'en-GB';
+    return date.toLocaleString(lang, {
         weekday: 'long', day: 'numeric', month: 'long',
         year: 'numeric', hour: '2-digit', minute: '2-digit',
         hour12: false
