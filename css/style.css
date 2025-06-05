@@ -300,11 +300,6 @@ body {
     margin: 2.2em auto 0;
 }
 
-.form__group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
 
 .form__row {
     display: flex;
@@ -312,9 +307,24 @@ body {
     gap: 1rem;
 }
 
-.form__row > .form__group {
-    flex: 1;
+.form__row--labels,
+.form__row--inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
+
+.form__row--labels > .form__label {
+    flex: 1;
+    text-align: center;
+}
+
+.form__row--inputs > .form__input {
+    flex: none;
+    width: 80px;
+    text-align: center;
+}
+
 
 .form__label {
     font-size: 1.01rem;
