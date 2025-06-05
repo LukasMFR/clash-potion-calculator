@@ -28,7 +28,10 @@ function formatDateHuman(date) {
 function formatResultList(items) {
     return '<div class="result__list">' + items.map(function (item) {
         var val = String(item[1]);
-        var stack = val.length > 20 ? ' result__row--stack' : '';
+        var label = String(item[0]);
+        // stack long labels or values on their own line
+        var stack = (val.length > 20 || label.length > 20)
+            ? ' result__row--stack' : '';
         return '<div class="result__row' + stack + '"><span class="result__label">' + item[0] +
             '</span><span class="result__value">' + val + '</span></div>';
     }).join('') + '</div>';
