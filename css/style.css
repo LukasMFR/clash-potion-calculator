@@ -312,6 +312,7 @@ body {
     flex-direction: column;
     gap: 0.35rem;
     align-items: center;
+    width: 80px;
 }
 
 
@@ -321,6 +322,8 @@ body {
     color: var(--text-secondary);
     letter-spacing: 0.01em;
     margin-bottom: 1px;
+    text-align: center;
+    display: block;
 }
 
 .form__input {
