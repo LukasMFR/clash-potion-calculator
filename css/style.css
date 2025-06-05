@@ -113,6 +113,15 @@ body {
     color: var(--primary);
 }
 
+.lang-select {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-weight: 500;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
 .navbar__toggle,
 .navbar__burger {
     display: none;

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About | Clash Potion Calculator</title>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/i18n.js"></script>
     <script defer src="js/utils.js"></script>
     <script defer src="js/calculator.js"></script>
 
@@ -40,18 +41,24 @@
             <span class="navbar__burger-line"></span>
         </label>
         <ul class="navbar__links">
-            <li><a href="index.html" class="navbar__link">Home</a></li>
-            <li><a href="simple-calc.html" class="navbar__link">Simple Calc</a></li>
-            <li><a href="builder-potion.html" class="navbar__link">Builder Potion</a></li>
-            <li><a href="research-potion.html" class="navbar__link">Research Potion</a></li>
-            <li><a href="pet-potion.html" class="navbar__link">Pet Potion</a></li>
-            <li><a href="about.html" class="navbar__link navbar__link--active">About</a></li>
+            <li><a href="index.html" class="navbar__link" data-i18n="nav_home">Home</a></li>
+            <li><a href="simple-calc.html" class="navbar__link" data-i18n="nav_simple">Simple Calc</a></li>
+            <li><a href="builder-potion.html" class="navbar__link" data-i18n="nav_builder">Builder Potion</a></li>
+            <li><a href="research-potion.html" class="navbar__link" data-i18n="nav_research">Research Potion</a></li>
+            <li><a href="pet-potion.html" class="navbar__link" data-i18n="nav_pet">Pet Potion</a></li>
+            <li><a href="about.html" class="navbar__link navbar__link--active" data-i18n="nav_about">About</a></li>
+            <li class="navbar__lang">
+                <select id="lang-select" aria-label="Language" class="lang-select">
+                    <option value="en">🌐🇬🇧 EN</option>
+                    <option value="fr">🇫🇷 FR</option>
+                </select>
+            </li>
         </ul>
     </nav>
     <main class="container container--centered">
-        <h1 class="title">About Clash Potion Calculator</h1>
+        <h1 class="title" data-i18n="nav_about">About Clash Potion Calculator</h1>
         <div class="card card--content about__card">
-            <p>
+            <p data-i18n="about_intro">
                 <strong>Clash Potion Calculator</strong> is a fan-made tool for Clash of Clans players, built to help
                 you quickly and easily calculate upgrade or research finish times when using potions.<br><br>
                 Created with ❤️ by <strong>Lukas Mauffré</strong> (<a
@@ -59,7 +66,7 @@
                     class="about__link">view source on GitHub</a>).
             </p>
             <hr class="about__divider">
-            <p class="about__disclaimer">
+            <p class="about__disclaimer" data-i18n="about_disclaimer">
                 This project is <strong>not affiliated with, endorsed, sponsored, or specifically approved by Supercell
                     or Clash of Clans</strong>.<br>
                 Clash of Clans and Supercell are trademarks or registered trademarks of Supercell Oy.
@@ -68,17 +75,17 @@
             </p>
             <hr class="about__divider">
             <div class="about__support">
-                <h2 class="about__support-title">☕ Support the Project</h2>
-                <p>If you found this tool helpful and want to support my work, you can buy me a coffee here:</p>
+                <h2 class="about__support-title" data-i18n="about_support_title">☕ Support the Project</h2>
+                <p data-i18n="about_support_intro">If you found this tool helpful and want to support my work, you can buy me a coffee here:</p>
                 <p>
                     <a href="https://coff.ee/LukasMFR" target="_blank" rel="noopener" class="about__support-link">
                         <strong>https://coff.ee/LukasMFR</strong>
                     </a>
                 </p>
-                <p class="about__support-thanks">Thank you so much!</p>
+                <p class="about__support-thanks" data-i18n="about_support_thanks">Thank you so much!</p>
             </div>
             <hr class="about__divider">
-            <p class="about__meta">
+            <p class="about__meta" data-i18n="about_meta">
                 <strong>Version:</strong> 1.0<br>
                 <strong>Source code:</strong> <a href="https://github.com/LukasMFR/clash-potion-calculator"
                     target="_blank" rel="noopener" class="about__link">GitHub Repository</a>

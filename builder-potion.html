@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Builder Potion | Clash Potion Calculator</title>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/i18n.js"></script>
     <script defer src="js/utils.js"></script>
     <script defer src="js/calculator.js"></script>
 
@@ -40,78 +41,84 @@
             <span class="navbar__burger-line"></span>
         </label>
         <ul class="navbar__links">
-            <li><a href="index.html" class="navbar__link">Home</a></li>
-            <li><a href="simple-calc.html" class="navbar__link">Simple Calc</a></li>
-            <li><a href="builder-potion.html" class="navbar__link navbar__link--active">Builder Potion</a></li>
-            <li><a href="research-potion.html" class="navbar__link">Research Potion</a></li>
-            <li><a href="pet-potion.html" class="navbar__link">Pet Potion</a></li>
-            <li><a href="about.html" class="navbar__link">About</a></li>
+            <li><a href="index.html" class="navbar__link" data-i18n="nav_home">Home</a></li>
+            <li><a href="simple-calc.html" class="navbar__link" data-i18n="nav_simple">Simple Calc</a></li>
+            <li><a href="builder-potion.html" class="navbar__link navbar__link--active" data-i18n="nav_builder">Builder Potion</a></li>
+            <li><a href="research-potion.html" class="navbar__link" data-i18n="nav_research">Research Potion</a></li>
+            <li><a href="pet-potion.html" class="navbar__link" data-i18n="nav_pet">Pet Potion</a></li>
+            <li><a href="about.html" class="navbar__link" data-i18n="nav_about">About</a></li>
+            <li class="navbar__lang">
+                <select id="lang-select" aria-label="Language" class="lang-select">
+                    <option value="en">🌐🇬🇧 EN</option>
+                    <option value="fr">🇫🇷 FR</option>
+                </select>
+            </li>
         </ul>
     </nav>
     <main class="container">
-        <h1 class="title">Builder Potion Calculator</h1>
+        <h1 class="title" data-i18n="builder_title">Builder Potion Calculator</h1>
         <div class="tabs">
-            <button class="tabs__btn tabs__btn--active" data-tab="potion">By Potions</button>
-            <button class="tabs__btn" data-tab="boost">By Boost Time Left</button>
+            <button class="tabs__btn tabs__btn--active" data-tab="potion" data-i18n="by_potions">By Potions</button>
+            <button class="tabs__btn" data-tab="boost" data-i18n="by_boost">By Boost Time Left</button>
         </div>
         <div class="split-layout">
             <div class="split-layout__left">
                 <form id="builderPotionForm" class="form card card--content" data-tab-content="potion">
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="builder-days" class="form__label">Days</label>
+                            <label for="builder-days" class="form__label" data-i18n="days">Days</label>
                             <input type="number" class="form__input" id="builder-days" name="days" min="0" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="builder-hours" class="form__label">Hours</label>
+                            <label for="builder-hours" class="form__label" data-i18n="hours">Hours</label>
                             <input type="number" class="form__input" id="builder-hours" name="hours" min="0" max="23" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="builder-minutes" class="form__label">Minutes</label>
+                            <label for="builder-minutes" class="form__label" data-i18n="minutes">Minutes</label>
                             <input type="number" class="form__input" id="builder-minutes" name="minutes" min="0" max="59" value="0">
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="builder-potions" class="form__label">Builder Potions</label>
+                            <label for="builder-potions" class="form__label" data-i18n="builder_potions">Builder Potions</label>
                             <input type="number" class="form__input" id="builder-potions" name="potions" min="0" value="0">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                    <button type="submit" class="btn btn--primary btn--animated" data-i18n="calculate">Calculate</button>
                 </form>
                 <form id="builderBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="builder-boost-hours" class="form__label">Boost Hours Left</label>
+                            <label for="builder-boost-hours" class="form__label" data-i18n="boost_hours_left">Boost Hours Left</label>
                             <input type="number" class="form__input" id="builder-boost-hours" name="boost_hours" min="0" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="builder-boost-minutes" class="form__label">Boost Minutes Left</label>
+                            <label for="builder-boost-minutes" class="form__label" data-i18n="boost_minutes_left">Boost Minutes Left</label>
                             <input type="number" class="form__input" id="builder-boost-minutes" name="boost_minutes" min="0" max="59" value="0">
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="builder-boost-days" class="form__label">Upgrade Days Left</label>
+                            <label for="builder-boost-days" class="form__label" data-i18n="upgrade_days_left">Upgrade Days Left</label>
                             <input type="number" class="form__input" id="builder-boost-days" name="days" min="0" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="builder-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
+                            <label for="builder-boost-hours-upgrade" class="form__label" data-i18n="upgrade_hours_left">Upgrade Hours Left</label>
                             <input type="number" class="form__input" id="builder-boost-hours-upgrade" name="hours" min="0" max="23" value="0">
                         </div>
                         <div class="form__group">
-                            <label for="builder-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
+                            <label for="builder-boost-minutes-upgrade" class="form__label" data-i18n="upgrade_minutes_left">Upgrade Minutes Left</label>
                             <input type="number" class="form__input" id="builder-boost-minutes-upgrade" name="minutes" min="0" max="59" value="0">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
+                    <button type="submit" class="btn btn--primary btn--animated" data-i18n="calculate">Calculate</button>
                 </form>
             </div>
             <div class="split-layout__right">
                 <div id="builderPotionResult" class="result card card--result">
                     <div class="result__placeholder">
                         <img src="assets/Magic_Item_Builder_Potion.png" alt="" class="result__icon">
-                        <div class="result__text">
+                        <div class="result__text" data-i18n="placeholder_upgrade">
                             Enter an upgrade duration and number of potions,<br>
                             then click <b>Calculate</b>.<br>
                             Your result will appear here!

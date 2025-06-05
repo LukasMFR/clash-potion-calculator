@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clash Potion Calculator</title>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/i18n.js"></script>
 
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
@@ -38,34 +39,40 @@
             <span class="navbar__burger-line"></span>
         </label>
         <ul class="navbar__links">
-            <li><a href="index.html" class="navbar__link">Home</a></li>
-            <li><a href="simple-calc.html" class="navbar__link">Simple Calc</a></li>
-            <li><a href="builder-potion.html" class="navbar__link">Builder Potion</a></li>
-            <li><a href="research-potion.html" class="navbar__link">Research Potion</a></li>
-            <li><a href="pet-potion.html" class="navbar__link">Pet Potion</a></li>
-            <li><a href="about.html" class="navbar__link">About</a></li>
+            <li><a href="index.html" class="navbar__link" data-i18n="nav_home">Home</a></li>
+            <li><a href="simple-calc.html" class="navbar__link" data-i18n="nav_simple">Simple Calc</a></li>
+            <li><a href="builder-potion.html" class="navbar__link" data-i18n="nav_builder">Builder Potion</a></li>
+            <li><a href="research-potion.html" class="navbar__link" data-i18n="nav_research">Research Potion</a></li>
+            <li><a href="pet-potion.html" class="navbar__link" data-i18n="nav_pet">Pet Potion</a></li>
+            <li><a href="about.html" class="navbar__link" data-i18n="nav_about">About</a></li>
+            <li class="navbar__lang">
+                <select id="lang-select" aria-label="Language" class="lang-select">
+                    <option value="en">🌐🇬🇧 EN</option>
+                    <option value="fr">🇫🇷 FR</option>
+                </select>
+            </li>
         </ul>
     </nav>
     <main class="container container--centered">
         <h1 class="title">Clash Potion Calculator</h1>
-        <p class="subtitle">Fast &amp; easy upgrade time calculations for Clash of Clans!</p>
+        <p class="subtitle" data-i18n="index_subtitle">Fast &amp; easy upgrade time calculations for Clash of Clans!</p>
         <div class="grid grid--potions">
             <a href="simple-calc.html" class="card card--main card--animated">
                 <img src="assets/Icon_BB_Clock.png" alt="Simple Calculator" class="card__icon card__icon--img">
-                <div class="card__title">Simple Calculator</div>
+                <div class="card__title" data-i18n="simple_title">Simple Calculator</div>
             </a>
             <a href="builder-potion.html" class="card card--main card--animated">
                 <img src="assets/Magic_Item_Builder_Potion.png" alt="Builder Potion" class="card__icon card__icon--img">
-                <div class="card__title">Builder Potion</div>
+                <div class="card__title" data-i18n="nav_builder">Builder Potion</div>
             </a>
             <a href="research-potion.html" class="card card--main card--animated">
                 <img src="assets/Magic_Item_Research_Potion.png" alt="Research Potion"
                     class="card__icon card__icon--img">
-                <div class="card__title">Research Potion</div>
+                <div class="card__title" data-i18n="nav_research">Research Potion</div>
             </a>
             <a href="pet-potion.html" class="card card--main card--animated">
                 <img src="assets/Magic_Item_Pet_Potion.png" alt="Pet Potion" class="card__icon card__icon--img">
-                <div class="card__title">Pet Potion</div>
+                <div class="card__title" data-i18n="nav_pet">Pet Potion</div>
             </a>
         </div>
     </main>
