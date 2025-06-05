@@ -665,8 +665,12 @@ a:focus {
     flex-wrap: wrap;
 }
 
+.result__row--stack {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .result__row--stack .result__value {
-    display: block;
     margin-top: 0.2em;
 }
 
