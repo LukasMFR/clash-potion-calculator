@@ -57,42 +57,52 @@
         <div class="split-layout">
             <div class="split-layout__left">
                 <form id="petPotionForm" class="form card card--content" data-tab-content="potion">
-                    <div class="form__row form__row--labels">
-                        <label for="pet-days" class="form__label">Days</label>
-                        <label for="pet-hours" class="form__label">Hours</label>
-                        <label for="pet-minutes" class="form__label">Minutes</label>
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="pet-days" class="form__label">Days</label>
+                            <input type="number" class="form__input" id="pet-days" name="days" min="0" value="0">
+                        </div>
+                        <div class="form__group">
+                            <label for="pet-hours" class="form__label">Hours</label>
+                            <input type="number" class="form__input" id="pet-hours" name="hours" min="0" max="23" value="0">
+                        </div>
+                        <div class="form__group">
+                            <label for="pet-minutes" class="form__label">Minutes</label>
+                            <input type="number" class="form__input" id="pet-minutes" name="minutes" min="0" max="59" value="0">
+                        </div>
                     </div>
-                    <div class="form__row form__row--inputs">
-                        <input type="number" class="form__input" id="pet-days" name="days" min="0" value="0">
-                        <input type="number" class="form__input" id="pet-hours" name="hours" min="0" max="23" value="0">
-                        <input type="number" class="form__input" id="pet-minutes" name="minutes" min="0" max="59" value="0">
-                    </div>
-                    <div class="form__row form__row--labels">
-                        <label for="pet-potions" class="form__label">Pet Potions</label>
-                    </div>
-                    <div class="form__row form__row--inputs">
-                        <input type="number" class="form__input" id="pet-potions" name="potions" min="0" value="0">
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="pet-potions" class="form__label">Pet Potions</label>
+                            <input type="number" class="form__input" id="pet-potions" name="potions" min="0" value="0">
+                        </div>
                     </div>
                     <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
                 </form>
                 <form id="petBoostForm" class="form card card--content form--hidden" data-tab-content="boost">
-                    <div class="form__row form__row--labels">
-                        <label for="pet-boost-hours" class="form__label">Boost Hours Left</label>
-                        <label for="pet-boost-minutes" class="form__label">Boost Minutes Left</label>
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="pet-boost-hours" class="form__label">Boost Hours Left</label>
+                            <input type="number" class="form__input" id="pet-boost-hours" name="boost_hours" min="0" value="0">
+                        </div>
+                        <div class="form__group">
+                            <label for="pet-boost-minutes" class="form__label">Boost Minutes Left</label>
+                            <input type="number" class="form__input" id="pet-boost-minutes" name="boost_minutes" min="0" max="59" value="0">
+                        </div>
                     </div>
-                    <div class="form__row form__row--inputs">
-                        <input type="number" class="form__input" id="pet-boost-hours" name="boost_hours" min="0" value="0">
-                        <input type="number" class="form__input" id="pet-boost-minutes" name="boost_minutes" min="0" max="59" value="0">
-                    </div>
-                    <div class="form__row form__row--labels">
-                        <label for="pet-boost-days" class="form__label">Upgrade Days Left</label>
-                        <label for="pet-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
-                        <label for="pet-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
-                    </div>
-                    <div class="form__row form__row--inputs">
-                        <input type="number" class="form__input" id="pet-boost-days" name="days" min="0" value="0">
-                        <input type="number" class="form__input" id="pet-boost-hours-upgrade" name="hours" min="0" max="23" value="0">
-                        <input type="number" class="form__input" id="pet-boost-minutes-upgrade" name="minutes" min="0" max="59" value="0">
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="pet-boost-days" class="form__label">Upgrade Days Left</label>
+                            <input type="number" class="form__input" id="pet-boost-days" name="days" min="0" value="0">
+                        </div>
+                        <div class="form__group">
+                            <label for="pet-boost-hours-upgrade" class="form__label">Upgrade Hours Left</label>
+                            <input type="number" class="form__input" id="pet-boost-hours-upgrade" name="hours" min="0" max="23" value="0">
+                        </div>
+                        <div class="form__group">
+                            <label for="pet-boost-minutes-upgrade" class="form__label">Upgrade Minutes Left</label>
+                            <input type="number" class="form__input" id="pet-boost-minutes-upgrade" name="minutes" min="0" max="59" value="0">
+                        </div>
                     </div>
                     <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
                 </form>

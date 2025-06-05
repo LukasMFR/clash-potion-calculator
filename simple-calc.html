@@ -53,15 +53,19 @@
         <div class="split-layout">
             <div class="split-layout__left">
                 <form id="simpleCalcForm" class="form card card--content">
-                    <div class="form__row form__row--labels">
-                        <label for="days" class="form__label">Days</label>
-                        <label for="hours" class="form__label">Hours</label>
-                        <label for="minutes" class="form__label">Minutes</label>
-                    </div>
-                    <div class="form__row form__row--inputs">
-                        <input type="number" class="form__input" id="days" name="days" min="0" value="0">
-                        <input type="number" class="form__input" id="hours" name="hours" min="0" max="23" value="0">
-                        <input type="number" class="form__input" id="minutes" name="minutes" min="0" max="59" value="0">
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="days" class="form__label">Days</label>
+                            <input type="number" class="form__input" id="days" name="days" min="0" value="0">
+                        </div>
+                        <div class="form__group">
+                            <label for="hours" class="form__label">Hours</label>
+                            <input type="number" class="form__input" id="hours" name="hours" min="0" max="23" value="0">
+                        </div>
+                        <div class="form__group">
+                            <label for="minutes" class="form__label">Minutes</label>
+                            <input type="number" class="form__input" id="minutes" name="minutes" min="0" max="59" value="0">
+                        </div>
                     </div>
                     <button type="submit" class="btn btn--primary btn--animated">Calculate</button>
                 </form>
