@@ -306,6 +306,16 @@ body {
     gap: 0.35rem;
 }
 
+.form__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.form__row > .form__group {
+    flex: 1;
+}
+
 .form__label {
     font-size: 1.01rem;
     font-weight: 600;
