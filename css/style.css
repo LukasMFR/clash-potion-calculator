@@ -103,6 +103,7 @@ body {
     font-weight: 500;
     padding: 8px 14px;
     border-radius: var(--border-radius-small);
+    white-space: nowrap;
     transition: background var(--transition), color var(--transition);
 }
 
@@ -117,6 +118,7 @@ body {
     font-size: 1.2rem;
     padding: 8px 14px;
     border-radius: var(--border-radius-small);
+    color: var(--text-main);
     transition: background var(--transition), color var(--transition);
 }
 
@@ -151,6 +153,7 @@ body {
     width: 100%;
     text-align: left;
     cursor: pointer;
+    color: var(--text-main);
 }
 
 .lang-dropdown button:hover {

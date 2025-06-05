@@ -116,7 +116,8 @@ const translations = {
       thanks: 'Thank you so much!',
       version: 'Version:',
       source: 'Source code:',
-      repo: 'GitHub Repository'
+      repo: 'GitHub Repository',
+      meta: '<strong>Version:</strong> 1.0<br><strong>Source code:</strong> <a href="https://github.com/LukasMFR/clash-potion-calculator" target="_blank" rel="noopener" class="about__link">GitHub Repository</a>'
     }
   },
   fr: {
@@ -237,6 +238,7 @@ const translations = {
       version: 'Version&nbsp;:',
       source: 'Code source&nbsp;:',
       repo: 'Dépôt GitHub'
+      ,meta: '<strong>Version&nbsp;:</strong> 1.0<br><strong>Code source&nbsp;:</strong> <a href="https://github.com/LukasMFR/clash-potion-calculator" target="_blank" rel="noopener" class="about__link">Dépôt GitHub</a>'
     }
   }
 };
