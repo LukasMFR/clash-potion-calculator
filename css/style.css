@@ -321,7 +321,7 @@ body {
 
 .form__row--inputs > .form__input {
     flex: none;
-    width: 80px;
+    width: 64px;
     text-align: center;
 }
 
