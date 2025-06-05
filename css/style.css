@@ -312,7 +312,9 @@ body {
     flex-direction: column;
     gap: 0.35rem;
     align-items: center;
-    width: 80px;
+    min-width: 80px;
+    max-width: 120px;
+    flex: 1 1 80px;
 }
 
 
