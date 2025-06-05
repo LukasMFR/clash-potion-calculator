@@ -631,7 +631,7 @@ a:focus {
     flex-direction: column;
     align-items: center;
     opacity: 0.5;
-    padding: 2em 0;
+    padding: 2em 1em;
 }
 
 .result__icon {
