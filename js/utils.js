@@ -23,3 +23,11 @@ function formatDateHuman(date) {
         hour12: false
     });
 }
+
+// Format an array of [label, value] pairs into styled HTML
+function formatResultList(items) {
+    return '<div class="result__list">' + items.map(function (item) {
+        return '<div class="result__row"><span class="result__label">' + item[0] +
+            '</span><span class="result__value">' + item[1] + '</span></div>';
+    }).join('') + '</div>';
+}

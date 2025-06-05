@@ -648,3 +648,30 @@ a:focus {
     font-size: 1.08em;
     color: var(--muted, #9094a0);
 }
+
+/* New result layout */
+.result__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45em;
+    margin-top: 0.5em;
+}
+
+.result__row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed var(--about-divider);
+    padding: 0.3em 0;
+}
+
+.result__row:last-child {
+    border-bottom: none;
+}
+
+.result__label {
+    color: var(--text-secondary);
+}
+
+.result__value {
+    font-weight: 600;
+}

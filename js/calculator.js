@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const endDate = new Date(now.getTime() + totalMinutes * 60000);
 
             const result = document.getElementById('simpleCalcResult');
-            result.innerHTML = `
-        <strong>Entered duration:</strong> ${days}d ${hours}h ${minutes}m<br>
-        <strong>End date:</strong> ${formatDateHuman(endDate)}
-      `;
+            result.innerHTML = formatResultList([
+                ['Entered duration', `${days}d ${hours}h ${minutes}m`],
+                ['End date', formatDateHuman(endDate)]
+            ]);
             result.classList.remove('result--hidden');
         });
     }
@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalLeft = fromMinutes(totalRealMinutes);
 
             const result = document.getElementById('builderPotionResult');
-            result.innerHTML = `
-        <strong>Upgrade duration:</strong> ${days}d ${hours}h ${minutes}m<br>
-        <strong>Potions used:</strong> ${potions}<br>
-        <strong>Time under potion:</strong> ${realUnderPotion.hours}h ${realUnderPotion.minutes}m<br>
-        <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
-        <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
-        <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
-      `;
+            result.innerHTML = formatResultList([
+                ['Upgrade duration', `${days}d ${hours}h ${minutes}m`],
+                ['Potions used', potions],
+                ['Time under potion', `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
+                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                ['End date', formatDateHuman(endDate)],
+                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+            ]);
             result.classList.remove('result--hidden');
         });
     }
@@ -98,15 +98,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalLeft = fromMinutes(totalRealMinutes);
 
             const result = document.getElementById('builderPotionResult');
-            result.innerHTML = `
-        <strong>Upgrade left:</strong> ${days}d ${hours}h ${minutes}m<br>
-        <strong>Boost left:</strong> ${boostHours}h ${boostMinutes}m<br>
-        <strong>Covered by boost:</strong> ${coveredByBoost}m<br>
-        <strong>${finishedWithBoost ? "Finished entirely under boost!" : "Time under boost:"}</strong> ${realUnderBoost.hours}h ${realUnderBoost.minutes}m<br>
-        <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
-        <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
-        <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
-      `;
+            result.innerHTML = formatResultList([
+                ['Upgrade left', `${days}d ${hours}h ${minutes}m`],
+                ['Boost left', `${boostHours}h ${boostMinutes}m`],
+                ['Covered by boost', `${coveredByBoost}m`],
+                [finishedWithBoost ? 'Finished entirely under boost!' : 'Time under boost', `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
+                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                ['End date', formatDateHuman(endDate)],
+                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+            ]);
             result.classList.remove('result--hidden');
         });
     }
@@ -140,14 +140,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalLeft = fromMinutes(totalRealMinutes);
 
             const result = document.getElementById('researchPotionResult');
-            result.innerHTML = `
-      <strong>Upgrade duration:</strong> ${days}d ${hours}h ${minutes}m<br>
-      <strong>Potions used:</strong> ${potions}<br>
-      <strong>Time under potion:</strong> ${realUnderPotion.hours}h ${realUnderPotion.minutes}m<br>
-      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
-      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
-      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
-    `;
+            result.innerHTML = formatResultList([
+                ['Upgrade duration', `${days}d ${hours}h ${minutes}m`],
+                ['Potions used', potions],
+                ['Time under potion', `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
+                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                ['End date', formatDateHuman(endDate)],
+                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+            ]);
             result.classList.remove('result--hidden');
         });
     }
@@ -185,15 +185,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalLeft = fromMinutes(totalRealMinutes);
 
             const result = document.getElementById('researchPotionResult');
-            result.innerHTML = `
-      <strong>Upgrade left:</strong> ${days}d ${hours}h ${minutes}m<br>
-      <strong>Boost left:</strong> ${boostHours}h ${boostMinutes}m<br>
-      <strong>Covered by boost:</strong> ${coveredByBoost}m<br>
-      <strong>${finishedWithBoost ? "Finished entirely under boost!" : "Time under boost:"}</strong> ${realUnderBoost.hours}h ${realUnderBoost.minutes}m<br>
-      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
-      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
-      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
-    `;
+            result.innerHTML = formatResultList([
+                ['Upgrade left', `${days}d ${hours}h ${minutes}m`],
+                ['Boost left', `${boostHours}h ${boostMinutes}m`],
+                ['Covered by boost', `${coveredByBoost}m`],
+                [finishedWithBoost ? 'Finished entirely under boost!' : 'Time under boost', `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
+                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                ['End date', formatDateHuman(endDate)],
+                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+            ]);
             result.classList.remove('result--hidden');
         });
     }
@@ -227,14 +227,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalLeft = fromMinutes(totalRealMinutes);
 
             const result = document.getElementById('petPotionResult');
-            result.innerHTML = `
-      <strong>Upgrade duration:</strong> ${days}d ${hours}h ${minutes}m<br>
-      <strong>Potions used:</strong> ${potions}<br>
-      <strong>Time under potion:</strong> ${realUnderPotion.hours}h ${realUnderPotion.minutes}m<br>
-      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
-      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
-      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
-    `;
+            result.innerHTML = formatResultList([
+                ['Upgrade duration', `${days}d ${hours}h ${minutes}m`],
+                ['Potions used', potions],
+                ['Time under potion', `${realUnderPotion.hours}h ${realUnderPotion.minutes}m`],
+                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                ['End date', formatDateHuman(endDate)],
+                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+            ]);
             result.classList.remove('result--hidden');
         });
     }
@@ -272,15 +272,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalLeft = fromMinutes(totalRealMinutes);
 
             const result = document.getElementById('petPotionResult');
-            result.innerHTML = `
-      <strong>Upgrade left:</strong> ${days}d ${hours}h ${minutes}m<br>
-      <strong>Boost left:</strong> ${boostHours}h ${boostMinutes}m<br>
-      <strong>Covered by boost:</strong> ${coveredByBoost}m<br>
-      <strong>${finishedWithBoost ? "Finished entirely under boost!" : "Time under boost:"}</strong> ${realUnderBoost.hours}h ${realUnderBoost.minutes}m<br>
-      <strong>Normal time left:</strong> ${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m<br>
-      <strong>End date:</strong> ${formatDateHuman(endDate)}<br>
-      <strong>Total remaining:</strong> ${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m
-    `;
+            result.innerHTML = formatResultList([
+                ['Upgrade left', `${days}d ${hours}h ${minutes}m`],
+                ['Boost left', `${boostHours}h ${boostMinutes}m`],
+                ['Covered by boost', `${coveredByBoost}m`],
+                [finishedWithBoost ? 'Finished entirely under boost!' : 'Time under boost', `${realUnderBoost.hours}h ${realUnderBoost.minutes}m`],
+                ['Normal time left', `${normalLeft.days}d ${normalLeft.hours}h ${normalLeft.minutes}m`],
+                ['End date', formatDateHuman(endDate)],
+                ['Total remaining', `${totalLeft.days}d ${totalLeft.hours}h ${totalLeft.minutes}m`]
+            ]);
             result.classList.remove('result--hidden');
         });
     }
