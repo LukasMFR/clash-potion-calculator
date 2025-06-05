@@ -323,7 +323,10 @@ body {
     letter-spacing: 0.01em;
     margin-bottom: 1px;
     text-align: center;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 3.6rem;
 }
 
 .form__input {
